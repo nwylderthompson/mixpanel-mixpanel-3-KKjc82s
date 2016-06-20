@@ -1,4 +1,4 @@
-var token = "mobilegaming"
+var token = "metrics-1"
 
 $(document).ready(function() {
 	reloadCharts();
