@@ -1,8 +1,8 @@
 var token = "metrics-1"
 
 $(document).ready(function() {
-	reloadCharts();
 	initializeMixpanel()
+	reloadCharts();
 	$('#fromDatePicker').datepicker({
 	    onSelect: function(dateText, inst) {
 			$("#fromDateText").text(returnDateText(dateText));

@@ -26,7 +26,7 @@ Mixpanel.prototype.segment = function(event, property, params) {
   if (params && typeof(params) != "object"){
     throw "Invalid params"
   }
-  var authHeader = btoa(this.api_secret) 
+  var authHeader = btoa(this.api_secret)  
   var url_params = segmentation_url_params(event, property, params)
   return $.ajax({
       url: "https://mixpanel.com/api/2.0/segmentation?" + url_params,
