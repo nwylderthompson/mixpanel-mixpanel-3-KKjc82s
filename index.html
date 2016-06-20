@@ -2,14 +2,101 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="mp_lib.js"></script>
+    <script src="index.js"></script>
+    <title>Mixpanel Dashboard</title>
   </head>
-  <body class="mixpanel-platform-body">
-    <h1>Hello, World!</h1>
-    <script>
-      // Run queries and display results here
-    </script>
+  <body>
+    <div id="reportBody">
+      <div class="display" id="title">
+        <div class="displayText" id="titletext">Mixpanel Dashboard</div>
+      </div>
+      <div class="display" id="addReport">
+        <div class="displayText" id="addReportText">Add Report</div>
+      </div>
+      <div class="display" id="saveDash">
+        <div class="displayText" id="saveDashText">Save</div>
+      </div>
+      <div id="dataBlock">
+        <div class="dates">
+          <div class="displayDate display" id="fromDate" value=""><div class="dateText displayText" id="fromDateText"></div></div>
+          <div class="displayDate display" id="toDate" value=""><div class="dateText displayText" id="toDateText"></div></div>
+        </div>
+        <div class="datePicker">
+          <input type="button" id="fromDatePicker">
+        </div>
+          <div class="datePicker">
+          <input type="button" id="toDatePicker">
+        </div>
+      </div>
+      <div id="modal">
+        <div class="modalElement">
+          <img class="modalImage" id="lineImage" src="images/chart.png"/>
+          <div class="modalDisplay" id="createSeg">
+            <div class="displayText">Segmentation</div>
+          </div>
+        </div>
+        <div class="modalElement">
+          <img class="modalImage" id="funnelImage" src="images/funnel.png"/>
+          <div class="modalDisplay" id="createFun">
+            <div class="displayText" >Funnels</div>
+          </div>
+        </div>
+        <div class="modalElement">
+          <img class="modalImage" id="retImage" src="images/retention.png"/>
+          <div class="modalDisplay" id="createRet">
+            <div class="displayText">Retention</div>
+          </div>
+        </div>
+        <div class="modalBuilder" id="segBuilder">
+          <div class="styled-select eventSelector">
+             <select id="eventOptions">
+                <option selected="selected">Loading...</option>
+             </select>
+          </div>
+          <div class="styled-select segSelector">
+            <div id="by"><div id="byText">BY</div></div>
+            <div id="propertyFilter">
+               <select id="propOptions">
+                  <option selected="selected" value="placeholder">Loading...</option>
+               </select>
+            </div>
+            <div class="toggleSelector">
+              <div class="toggle toggleBox-selected chartType" value="line">Line</div>
+              <div class="toggle toggleBox chartType" value="column">Bar</div>
+            </div>
+            <div class="toggleSelector" id="uniqueTotal">
+              <div class="toggle toggleBox-selected queryType" value="general">Total</div>
+              <div class="toggle toggleBox queryType" value="unique">Unique</div>
+            </div>
+            <input type="text" name="textfield" class="textField" placeholder="Report name" />
+            <div class="query" id="runQuery">SHOW</div>
+          </div>
+        </div>
+        <div class="modalBuilder" id="funnelBuilder">
+          <div class="styled-select funnelSelector">
+             <select id="funnelOptions">
+                <option selected="selected">Search Saved Funnels</option>
+             </select>
+             <div class="query" id="buildFunnel">Build</div>
+          </div>
+        </div>
+        <div class="modalBuilder" id="bookmarksBuilder">
+          <div id="comingSoon">Coming Soon!<sup style="font-size:9px;">TM</sup></div>
+        </div>
+      </div>
+      <div id="dashboard"></div>
+    </div>
+    <div id="overlay"></div>
   </body>
 </html>
