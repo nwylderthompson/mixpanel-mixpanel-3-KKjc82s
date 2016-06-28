@@ -1,4 +1,4 @@
-var token = "metrics-1"
+var token = "74a2b1cf60f8e7a44884ab8fc0a27f31"
 
 $(document).ready(function() {
 	initializeMixpanel()
